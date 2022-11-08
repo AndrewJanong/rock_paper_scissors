@@ -70,29 +70,56 @@ function game() {
     }
 }
 */
-const pScore = document.querySelector('#playerScore');
-const cScore = document.querySelector('#computerScore');
+const pScore = document.querySelector('#player-score');
+const cScore = document.querySelector('#computer-score');
 const msg = document.querySelector('#msg')
+const res = document.querySelector('#game-result');
+const retryButton = document.querySelector('#play-again');
 
 function play(e) {
     let computerChoice = getComputerChoice();
     let playerChoice = (e.target.alt).toLowerCase();
 
-    if (playRound(playerChoice, computerChoice) === 'win') {
-        pScore.textContent++;
-        msg.textContent = `WIN, computer picked ${computerChoice}`;
-    } else if (playRound(playerChoice, computerChoice) === 'lose') {
-        cScore.textContent++;
-        msg.textContent = `LOSE, computer picked ${computerChoice}`;
-    } else {
-        msg.textContent = `TIE, computer picked ${computerChoice}`;
+
+    if (pScore.textContent !== '3' && cScore.textContent !== '3') {
+        if (playRound(playerChoice, computerChoice) === 'win') {
+            pScore.textContent++;
+            msg.textContent = `WIN, computer picked ${computerChoice}`;
+        } else if (playRound(playerChoice, computerChoice) === 'lose') {
+            cScore.textContent++;
+            msg.textContent = `LOSE, computer picked ${computerChoice}`;
+        } else {
+            msg.textContent = `TIE, computer picked ${computerChoice}`;
+        }
     }
 
+    if (pScore.textContent === '3') {
+        res.innerHTML = 'You Won!';
+        retryButton.innerHTML = '<button id="play-again-button">play again?</button>';
+ 
+    } else if (cScore.textContent === '3') {
+        res.innerHTML = 'You Lost!';
+        retryButton.innerHTML = '<button id="play-again-button">play again?</button>';
+
+    }
+    
+}
+
+function restart(e) {
+    msg.textContent = `START!`;
+    pScore.textContent = '0';
+    cScore.textContent = '0';
+    res.innerHTML = '';
+    retryButton.innerHTML = '';
 
 }
 
-const buttons = document.querySelectorAll('.button');
-
+let buttons = document.querySelectorAll('.button');
 buttons.forEach(button => button.addEventListener('click', play));
+
+retryButton.addEventListener('click', restart);
+
+
+
 
 
