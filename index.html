@@ -6,7 +6,7 @@
   <link rel='stylesheet' href='styles.css'/>
 </head>
 <body>
-  <script src="javascript.js"></script>
+  
 
   <div class="header">
     <p>Rock Paper Scissors</p>
@@ -14,15 +14,25 @@
 
   <div class="body">
     <div class="score">
-      <p>0 : 0</p>
+      <p>
+        <span id="playerScore">0</span> 
+        : 
+        <span id="computerScore">0</span>
+      </p>
     </div>
 
     <div class="choices">
-      <img src="rock.png" alt="Rock">
-      <img src="paper.png" alt="Paper">
-      <img src="scissors.png" alt="Scissors">
+      <img class="button" src="rock.png" alt="Rock">
+      <img class="button" src="paper.png" alt="Paper">
+      <img class="button" src="scissors.png" alt="Scissors">
+    </div>
+
+    <div id="msg">
+      START!
     </div>
   </div>
+
+  <script src="javascript.js"></script>
 
 </body>
 </html>

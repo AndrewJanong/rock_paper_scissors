@@ -13,6 +13,8 @@ function getComputerChoice() {
     }
 }
 
+
+
 function playRound(playerSelection, computerSelection) {
     let win_array = [[0, 1, 2],
                      [2, 0, 1],
@@ -36,15 +38,15 @@ function playRound(playerSelection, computerSelection) {
     }
 
     if (win_array[p][c] === 0) {
-        return 'It\'s a tie!';
+        return 'tie';
     } else if (win_array[p][c] === 1) {
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        return 'lose';
     } else {
-        return `You win! ${playerSelection} beats ${computerSelection}`;
+        return 'win';
     }
 }
 
-
+/*
 function game() {
     let playerChoice;
     let computerChoice;
@@ -67,4 +69,30 @@ function game() {
         console.log(`Score: ${playerScore} - ${computerScore}`);
     }
 }
+*/
+const pScore = document.querySelector('#playerScore');
+const cScore = document.querySelector('#computerScore');
+const msg = document.querySelector('#msg')
+
+function play(e) {
+    let computerChoice = getComputerChoice();
+    let playerChoice = (e.target.alt).toLowerCase();
+
+    if (playRound(playerChoice, computerChoice) === 'win') {
+        pScore.textContent++;
+        msg.textContent = `WIN, computer picked ${computerChoice}`;
+    } else if (playRound(playerChoice, computerChoice) === 'lose') {
+        cScore.textContent++;
+        msg.textContent = `LOSE, computer picked ${computerChoice}`;
+    } else {
+        msg.textContent = `TIE, computer picked ${computerChoice}`;
+    }
+
+
+}
+
+const buttons = document.querySelectorAll('.button');
+
+buttons.forEach(button => button.addEventListener('click', play));
+
 
