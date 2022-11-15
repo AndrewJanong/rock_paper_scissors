@@ -13,8 +13,6 @@ function getComputerChoice() {
     }
 }
 
-
-
 function playRound(playerSelection, computerSelection) {
     let win_array = [[0, 1, 2],
                      [2, 0, 1],
@@ -46,30 +44,6 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-/*
-function game() {
-    let playerChoice;
-    let computerChoice;
-
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while (playerScore < 3 && computerScore < 3) {
-        playerChoice = prompt("Rock, Paper, or Scissors?").toLowerCase();
-        computerChoice = getComputerChoice();
-        let result = playRound(playerChoice, computerChoice)
-        console.log(result);
-
-        if (result.slice(0, 9) === 'You lose!') {
-            computerScore++;
-        } else if (result.slice(0, 8) === 'You win!') {
-            playerScore++;
-        }
-        
-        console.log(`Score: ${playerScore} - ${computerScore}`);
-    }
-}
-*/
 const pScore = document.querySelector('#player-score');
 const cScore = document.querySelector('#computer-score');
 const msg = document.querySelector('#msg')
